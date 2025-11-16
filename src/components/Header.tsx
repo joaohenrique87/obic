@@ -9,6 +9,17 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import logo from "@/assets/logo.png";
+
+/**
+ * COMPONENTE HEADER/NAVEGAÇÃO
+ * 
+ * Como personalizar:
+ * 1. LOGO: A logo é importada de src/assets/logo.png
+ * 2. MENU: Adicione ou remova itens nos arrays de navegação
+ * 3. LINKS: Atualize as rotas conforme suas páginas
+ * 4. CORES: Use as variáveis do design system (primary, accent, etc.)
+ */
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,10 +27,13 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
+        {/* Logo e branding - EDITE: Ajuste tamanho da logo alterando h-12/h-16 */}
         <Link to="/" className="flex items-center space-x-3">
-          <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center">
-            <span className="text-2xl font-bold text-primary-foreground">O</span>
-          </div>
+          <img 
+            src={logo} 
+            alt="ObIC - Observatório de Indicadores Culturais" 
+            className="h-12 sm:h-16 w-auto"
+          />
           <div className="flex flex-col">
             <span className="text-xl font-bold text-foreground">ObIC</span>
             <span className="text-xs text-muted-foreground hidden sm:block">Observatório de Indicadores Culturais</span>
@@ -116,6 +130,7 @@ const Header = () => {
           <nav className="flex flex-col space-y-4">
             <Link to="/quem-somos" className="text-foreground hover:text-primary transition-colors">Quem Somos</Link>
             <Link to="/equipe" className="text-foreground hover:text-primary transition-colors">Equipe</Link>
+            {/* EDITE: Adicione ou remova links conforme necessário */}
             <Link to="/relatorios" className="text-foreground hover:text-primary transition-colors">Relatórios</Link>
             <Link to="/pesquisas" className="text-foreground hover:text-primary transition-colors">Pesquisas</Link>
             <Link to="/cultura-em-numeros" className="text-foreground hover:text-primary transition-colors">Cultura em Números</Link>
