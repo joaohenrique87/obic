@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -67,14 +67,10 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Redes Sociais</h3>
             <div className="flex gap-3">
-              <a href="#" className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                <Twitter className="h-5 w-5" />
+              <a href="https://www.linkedin.com/in/obic/"
+              target="_blank"
+               className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <Linkedin className="h-5 w-5" />
               </a>
             </div>
           </div>

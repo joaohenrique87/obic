@@ -28,16 +28,14 @@ const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         {/* Logo e branding - EDITE: Ajuste tamanho da logo alterando h-12/h-16 */}
-        <Link to="/" className="flex items-center space-x-3">
+        <Link to="/" className="flex items-center space-x-5">
           <img 
             src={logo} 
             alt="ObIC - Observatório de Indicadores Culturais" 
-            className="h-12 sm:h-16 w-auto"
+            className="h-20 w-50 bg-transparent hover:scale-150 transition-transform"
+            
           />
-          <div className="flex flex-col">
-            <span className="text-xl font-bold text-foreground">ObIC</span>
-            <span className="text-xs text-muted-foreground hidden sm:block">Observatório de Indicadores Culturais</span>
-          </div>
+         
         </Link>
 
         {/* Desktop Navigation */}

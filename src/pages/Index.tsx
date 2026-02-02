@@ -5,103 +5,33 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Target, Eye, Heart, Lightbulb, ArrowRight } from "lucide-react";
+import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
+
 
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      
+
       <main className="flex-1">
         <Hero />
 
-        {/* Mission Section */}
-        <section className="py-20 bg-background">
-          <div className="container">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Nossa Missão
-              </h2>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Auxiliar a cultura pernambucana através de dados e informações que promovam e apoiem as ações dos agentes culturais
-              </p>
-            </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="border-2 hover:border-primary transition-all hover:shadow-medium">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4">
-                    <Target className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <CardTitle>Missão</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Auxiliar a cultura pernambucana através de dados que promovam o desenvolvimento cultural
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:border-primary transition-all hover:shadow-medium">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
-                    <Eye className="h-6 w-6 text-accent-foreground" />
-                  </div>
-                  <CardTitle>Visão</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Institucionalizar o monitoramento de dados para uma gestão orientada até 2026
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:border-primary transition-all hover:shadow-medium">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-gradient-primary flex items-center justify-center mb-4">
-                    <Heart className="h-6 w-6 text-primary-foreground" />
-                  </div>
-                  <CardTitle>Valores</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Transparência, ética, inovação e integridade em todas as nossas ações
-                  </CardDescription>
-                </CardContent>
-              </Card>
-
-              <Card className="border-2 hover:border-primary transition-all hover:shadow-medium">
-                <CardHeader>
-                  <div className="h-12 w-12 rounded-lg bg-gradient-accent flex items-center justify-center mb-4">
-                    <Lightbulb className="h-6 w-6 text-accent-foreground" />
-                  </div>
-                  <CardTitle>Objetivos</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription>
-                    Criar uma cultura de dados e ampliar o acesso às informações culturais em Pernambuco
-                  </CardDescription>
-                </CardContent>
-              </Card>
-            </div>
-          </div>
-        </section>
-
-        {/* About Section */}
         <section className="py-20 bg-muted">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+                <h2 className="text-3xl md:text-3xl font-bold text-foreground mb-6">
                   Quem Somos
                 </h2>
-                <p className="text-muted-foreground mb-6 leading-relaxed">
-                  O Observatório de Indicadores Culturais e Inovação em Dados (ObIC) é uma gerência dedicada da 
-                  Secretaria de Cultura de Pernambuco (SECULT-PE) à pesquisa, monitoramento e coleta sistemática 
+                <p className="text-lg font-['Cambria'] mb-1 leading-relaxed">
+                  O Observatório de Indicadores Culturais e Inovação em Dados (ObIC) é uma gerência dedicada da
+                  Secretaria de Cultura de Pernambuco (SECULT-PE) à pesquisa, monitoramento e coleta sistemática
                   de dados da cultura do estado.
                 </p>
-                <p className="text-muted-foreground mb-8 leading-relaxed">
-                  Com um enfoque particular no acompanhamento dos estudos relacionados às políticas culturais 
-                  desenvolvidas pela SECULT-PE, o Observatório desenvolve e analisa indicadores culturais, 
+                <p className="text-lg font-['Cambria'] mb-3 leading-relaxed">
+                  Com um enfoque particular no acompanhamento dos estudos relacionados às políticas culturais
+                  desenvolvidas pela SECULT-PE, o Observatório desenvolve e analisa indicadores culturais,
                   transformando números em informações para a tomada de decisão estratégica.
                 </p>
                 <Button size="lg" asChild>
@@ -155,23 +85,70 @@ const Index = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
+
+
+        {/* Mission Section */}
+        <section className="py-20 bg-background">
+          <div className="max-w-[1600px] mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Dashboards
+              </h2>
+              <p className="text-lg font-['Cambria'] text-muted-foreground max-w-2xl mx-auto">
+                Consulte abaixo os nossos Dashboards, onde você vai encontrar os resultados das leis analisadas por nós.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-5">
+              <a href="/relatorios"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="_blank">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="_blank">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="_blank">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="_blank">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                target="_blank">
+                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="py-20 bg-gradient-primary">
           <div className="container text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-              Explore Nossos Dados e Pesquisas
+              Explore Nossos Relatórios
             </h2>
-            <p className="text-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-              Acesse relatórios, dashboards e pesquisas sobre a cultura em Pernambuco
-            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
                 <Link to="/relatorios">Ver Relatórios</Link>
               </Button>
-              <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
-                <Link to="/pesquisas">Conhecer Pesquisas</Link>
-              </Button>
-            </div>
+  <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
+    <Link to="/pesquisas">Conhecer Pesquisas</Link>
+  </Button>            
+  <CarrosselRelatorio/>
+
+</div>
           </div>
         </section>
       </main>

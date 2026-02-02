@@ -1,71 +1,74 @@
+import React, { useState, useEffect } from 'react';
+import { Database, BarChart3, FileText, Search } from 'lucide-react';
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
-import { BarChart3, Database, FileText, Search } from "lucide-react";
+import { Link } from 'react-router-dom';
 
-const Hero = () => {
+
+ import img1 from '../assets/Fotos/cultura1.jpg';
+ import img2 from '../assets/Fotos/cultura2.jpg';
+ import img3 from '../assets/Fotos/cultura3.jpg';
+ import img4 from '../assets/Fotos/cultura4.jpg';
+ import img5 from '../assets/Fotos/cultura5.jpg';
+ import img6 from '../assets/Fotos/cultura6.jpg';
+ import img7 from '../assets/Fotos/cultura7.jpg';
+ import img8 from '../assets/Fotos/cultura8.jpg';
+ import img9 from '../assets/Fotos/cultura9.jpg';
+ import img10 from '../assets/Fotos/cultura10.jpg';
+ import img11 from '../assets/Fotos/cultura11.jpg';
+ import img12 from '../assets/Fotos/cultura12.jpg';
+ import img13 from '../assets/Fotos/cultura13.jpg';
+
+
+const Hero = () => {  
+  const [currentImage, setCurrentImage] = useState(0);
+  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13];
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % images.length);
+    }, 6000); 
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
-    <section className="relative overflow-hidden bg-gradient-hero py-20 md:py-32">
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-20"></div>
+    <section className="relative overflow-hidden bg-slate-900 py-20 md:py-32 min-h-[850px] flex items-center">
       
-      <div className="container relative">
+      {/* Camada 1: Imagens Locais com Transparência */}
+      {images.map((img, index) => (
+        <div
+          key={index}
+          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${
+            index === currentImage ? 'opacity-20' : 'opacity-0'
+          }`}
+          style={{
+            backgroundImage: `url('${img}')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'grayscale(20%)' // Opcional: deixa as fotos levemente sóbrias
+          }}
+        />
+      ))}
+
+      {/* Camada 2: Seu Gradiente Original (Preserva as Cores) */}
+      {/* Usamos opacity-90 para que as imagens do fundo apareçam sutilmente */}
+      <div className="absolute inset-0 bg-gradient-hero opacity-20 z-10"></div>
+      
+      {/* Camada 3: Grid Pattern (SVG original) */}
+      <div className="absolute inset-0 z-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-10"></div>
+
+      
+      <div className="container relative z-30">
         <div className="mx-auto max-w-4xl text-center">
-          <div className="mb-6 inline-block">
-            <span className="inline-flex items-center gap-2 rounded-full bg-white/20 backdrop-blur-sm px-4 py-2 text-sm font-medium text-white">
-              <Database className="h-4 w-4" />
-              Gestão Orientada por Dados
-            </span>
-          </div>
-          
-          <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Observatório de Indicadores Culturais
+                   
+          <h1 className="mb-6 text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl opacity-50">
+            Observatório de Indicadores Culturais e Inovação em Dados
           </h1>
           
-          <p className="mb-8 text-lg text-white/90 md:text-xl max-w-2xl mx-auto">
+          <p className="mb-8 text-lg text-white/90 md:text-xl max-w-2xl mx-auto opacity-50">
             Transformando dados em informações para o desenvolvimento cultural de Pernambuco
           </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" variant="secondary" asChild className="shadow-large">
-              <Link to="/quem-somos">
-                Conheça o ObIC
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
-              <Link to="/cultura-em-numeros">
-                <BarChart3 className="mr-2 h-5 w-5" />
-                Cultura em Números
-              </Link>
-            </Button>
           </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm">
-              <FileText className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="text-3xl font-bold text-white mb-2">+100</h3>
-            <p className="text-white/80">Relatórios Publicados</p>
           </div>
-          
-          <div className="text-center">
-            <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm">
-              <Database className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="text-3xl font-bold text-white mb-2">+50k</h3>
-            <p className="text-white/80">Dados Coletados</p>
-          </div>
-          
-          <div className="text-center">
-            <div className="mb-3 inline-flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm">
-              <Search className="h-8 w-8 text-white" />
-            </div>
-            <h3 className="text-3xl font-bold text-white mb-2">+20</h3>
-            <p className="text-white/80">Pesquisas Realizadas</p>
-          </div>
-        </div>
-      </div>
     </section>
   );
 };

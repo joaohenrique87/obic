@@ -56,17 +56,14 @@ const Relatorios = () => {
                 */}
                 <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
                   <iframe
-                    src="https://exemplo-dashboard-lab.com/embed"
+                    src="https://secultpe-obic.shinyapps.io/pnab/"
                     className="w-full h-full rounded-lg"
                     style={{ minHeight: '600px' }}
                     frameBorder="0"
                     allowFullScreen
                     title="Dashboard Lei Aldir Blanc"
                   />
-                  {/* Placeholder - remova este texto quando adicionar o dashboard real */}
-                  <p className="text-muted-foreground absolute">
-                    Dashboard será exibido aqui - configure a URL no código
-                  </p>
+                 
                 </div>
               </CardContent>
             </Card>
