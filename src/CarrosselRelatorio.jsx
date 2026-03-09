@@ -19,7 +19,7 @@ const CarrosselRelatorio = () => {
 
   return (
     <div className="container-carrossel">
-      <h2>Relatórios e Publicações</h2>
+      
       <div className="grid-arquivos">
         {arquivos.map(arq => (
           <div key={arq.id} className="card-relatorio">

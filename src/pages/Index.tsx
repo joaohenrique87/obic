@@ -12,16 +12,13 @@ const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-
       <main className="flex-1">
         <Hero />
-
-
         <section className="py-20 bg-muted">
           <div className="container">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-3xl font-bold text-foreground mb-6">
+                <h2 className="text-3xl font-['Cambria'] md:text-3xl font-bold text-foreground mb-6">
                   Quem Somos
                 </h2>
                 <p className="text-lg font-['Cambria'] mb-1 leading-relaxed">
@@ -87,7 +84,7 @@ const Index = () => {
 
 
 
-        {/* Mission Section */}
+
         <section className="py-20 bg-background">
           <div className="max-w-[1600px] mx-auto px-4">
             <div className="text-center mb-16">
@@ -100,35 +97,25 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-5">
-              <a href="/relatorios"
+              <a href="/relatorios?tab=PNAB"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
                 target="">
                 <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
-               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+              <a href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="_blank">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                target="">
+                <img src="src/assets/lpg.jpeg" alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
-               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+              <a href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="_blank">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                target="">
+                <img src="src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
-               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+              <a href="htpps://www.globo.com"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="_blank">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
-               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="_blank">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
-               <a href="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="_blank">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                target="">
+                <img src="src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
             </div>
           </div>
@@ -140,15 +127,10 @@ const Index = () => {
               Explore Nossos Relatórios
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link to="/relatorios">Ver Relatórios</Link>
-              </Button>
-  <Button size="lg" variant="outline" asChild className="bg-white/10 backdrop-blur-sm border-white/20 text-white hover:bg-white/20">
-    <Link to="/pesquisas">Conhecer Pesquisas</Link>
-  </Button>            
-  <CarrosselRelatorio/>
-
-</div>
+              
+              <CarrosselRelatorio />
+              
+            </div>
           </div>
         </section>
       </main>

@@ -81,14 +81,7 @@ const Footer = () => {
             <p className="text-sm text-muted-foreground text-center md:text-left">
               © {new Date().getFullYear()} ObIC - Observatório de Indicadores Culturais. Todos os direitos reservados.
             </p>
-            <div className="flex gap-4 text-sm">
-              <Link to="/privacidade" className="text-muted-foreground hover:text-primary transition-colors">
-                Política de Privacidade
-              </Link>
-              <Link to="/termos" className="text-muted-foreground hover:text-primary transition-colors">
-                Termos de Uso
-              </Link>
-            </div>
+            
           </div>
         </div>
       </div>

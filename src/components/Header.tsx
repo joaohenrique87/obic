@@ -27,15 +27,14 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
-        {/* Logo e branding - EDITE: Ajuste tamanho da logo alterando h-12/h-16 */}
         <Link to="/" className="flex items-center space-x-5">
-          <img 
-            src={logo} 
-            alt="ObIC - Observatório de Indicadores Culturais" 
+          <img
+            src={logo}
+            alt="ObIC - Observatório de Indicadores Culturais"
             className="h-20 w-50 bg-transparent hover:scale-150 transition-transform"
-            
+
           />
-         
+
         </Link>
 
         {/* Desktop Navigation */}
@@ -65,31 +64,11 @@ const Header = () => {
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
-              
+
               <NavigationMenuItem>
-                <NavigationMenuTrigger>Relatórios</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <ul className="grid w-[500px] gap-3 p-4 md:grid-cols-2">
-                    <li>
-                      <Link to="/relatorios/lab" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Lei Aldir Blanc</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">2020/2021</p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/relatorios/lpg" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">Lei Paulo Gustavo</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">2023</p>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/relatorios/pnab" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
-                        <div className="text-sm font-medium leading-none">PNAB</div>
-                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">2024-2028</p>
-                      </Link>
-                    </li>
-                  </ul>
-                </NavigationMenuContent>
+                <Link to="/relatorios" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                  Relatórios
+                </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>

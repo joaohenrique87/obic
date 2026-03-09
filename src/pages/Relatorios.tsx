@@ -17,7 +17,7 @@ const Relatorios = () => {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      
+
       <main className="flex-1 container py-12">
         {/* Cabeçalho da página */}
         <div className="text-center mb-12">
@@ -30,30 +30,55 @@ const Relatorios = () => {
         {/* Sistema de Abas para diferentes categorias de relatórios */}
         <Tabs defaultValue="lab" className="w-full">
           <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="lab">Lei Aldir Blanc</TabsTrigger>
             <TabsTrigger value="lpg">Lei Paulo Gustavo</TabsTrigger>
-            <TabsTrigger value="pnab">PNAB</TabsTrigger>
+            <TabsTrigger value="PNAB">PNAB</TabsTrigger>
+            <TabsTrigger value="rouanet">Rouanet em Pernambuco</TabsTrigger>
+           
           </TabsList>
 
           {/* RELATÓRIO: LEI ALDIR BLANC */}
-          <TabsContent value="lab" className="space-y-8">
+          <TabsContent value="lpg" className="space-y-8">
             <Card>
               <CardHeader>
-                <CardTitle>Dashboard - Lei Aldir Blanc 2020/2021</CardTitle>
+                <CardTitle>Dashboard - Lei Paulo Gustavo</CardTitle>
                 <CardDescription>
-                  Visualização interativa dos dados da execução da Lei Aldir Blanc
+                  Visualização interativa dos dados da execução da Lei Paulo Gustavo
                   {/* COMO MELHORAR: Adicione uma descrição mais detalhada sobre o que o dashboard mostra */}
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                {/* 
-                  EMBED DO DASHBOARD
-                  Como configurar:
-                  1. Substitua a URL de 'src' abaixo pela URL do seu dashboard real
-                  2. Para Power BI: Use o link de compartilhamento público ou embed
-                  3. Para Looker Studio: Use a opção "Incorporar" e copie o iframe
-                  4. Ajuste height conforme necessário
-                */}
+                
+                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                  <iframe
+                    src="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '600px' }}
+                    frameBorder="0"
+                    allowFullScreen
+                    title="Dashboard Lei Paulo Gustavo"
+                  />
+
+                </div>
+              </CardContent>
+            </Card>
+
+            
+            <PDFList
+              category="lab"
+              title="Relatórios em PDF - Lei Aldir Blanc"
+            />
+          </TabsContent>
+
+          {/* RELATÓRIO: LEI PAULO GUSTAVO */}
+          <TabsContent value="PNAB" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - PNAB Ciclo 1</CardTitle>
+                <CardDescription>
+                  Acompanhe a implementação e resultados da PNAB Ciclo 1
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
                 <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
                   <iframe
                     src="https://secultpe-obic.shinyapps.io/pnab/"
@@ -61,47 +86,14 @@ const Relatorios = () => {
                     style={{ minHeight: '600px' }}
                     frameBorder="0"
                     allowFullScreen
-                    title="Dashboard Lei Aldir Blanc"
+                    title="Dashboard PNAB Ciclo 1"
                   />
                  
                 </div>
               </CardContent>
             </Card>
 
-            {/* Lista de PDFs relacionados */}
-            <PDFList 
-              category="lab"
-              title="Relatórios em PDF - Lei Aldir Blanc"
-            />
-          </TabsContent>
-
-          {/* RELATÓRIO: LEI PAULO GUSTAVO */}
-          <TabsContent value="lpg" className="space-y-8">
-            <Card>
-              <CardHeader>
-                <CardTitle>Dashboard - Lei Paulo Gustavo 2023</CardTitle>
-                <CardDescription>
-                  Acompanhe a implementação e resultados da Lei Paulo Gustavo
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
-                  <iframe
-                    src="https://exemplo-dashboard-lpg.com/embed"
-                    className="w-full h-full rounded-lg"
-                    style={{ minHeight: '600px' }}
-                    frameBorder="0"
-                    allowFullScreen
-                    title="Dashboard Lei Paulo Gustavo"
-                  />
-                  <p className="text-muted-foreground absolute">
-                    Dashboard será exibido aqui - configure a URL no código
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            <PDFList 
+            <PDFList
               category="lpg"
               title="Relatórios em PDF - Lei Paulo Gustavo"
             />
@@ -133,11 +125,71 @@ const Relatorios = () => {
               </CardContent>
             </Card>
 
-            <PDFList 
+            <PDFList
               category="pnab"
               title="Relatórios em PDF - PNAB"
             />
           </TabsContent>
+          <TabsContent value="PNAB" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - PNAB Ciclo 1</CardTitle>
+                <CardDescription>
+                  Acompanhe a implementação e resultados da PNAB Ciclo 1
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                  <iframe
+                    src="https://secultpe-obic.shinyapps.io/pnab/"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '600px' }}
+                    frameBorder="0"
+                    allowFullScreen
+                    title="Dashboard PNAB Ciclo 1"
+                  />
+                 
+                </div>
+              </CardContent>
+            </Card>
+
+            <PDFList
+              category="lpg"
+              title="Relatórios em PDF - Lei Paulo Gustavo"
+            />
+          </TabsContent>
+
+          {/* RELATÓRIO: PNAB */}
+          <TabsContent value="rouanet" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - Lei Rouanet em Pernambuco</CardTitle>
+                <CardDescription>
+                  Dados e indicadores da Lei Rouanet no Estado de Pernambuco
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="w-full aspect-video bg-muted rounded-lg flex items-center justify-center">
+                  <iframe
+                    src="https://secultpe-obic.shinyapps.io/rouanet-pe/"
+                    className="w-full h-full rounded-lg"
+                    style={{ minHeight: '600px' }}
+                    frameBorder="0"
+                    allowFullScreen
+                    title="Dashboard Lei Rouanet PE"
+                  />
+                  
+                </div>
+              </CardContent>
+            </Card>
+
+            <PDFList
+              category="pnab"
+              title="Relatórios em PDF - PNAB"
+            />
+          </TabsContent>
+       
+
         </Tabs>
       </main>
 
