@@ -2,37 +2,53 @@ import { supabase } from '@/lib/supabaseClient';
 
 const BUCKET = import.meta.env.VITE_SUPABASE_BUCKET;
 
-export const fetchRelatoriosDoSupabase = async () => {
+const getPublicUrl = (caminho) => {
+  const { data } = supabase.storage.from(BUCKET).getPublicUrl(caminho);
+  return data.publicUrl;
+};
+
+// Busca todos os PDFs ordenados do mais recente para o mais antigo
+export const fetchRelatoriosRecentes = async () => {
   try {
-    const { data, error } = await supabase.storage
-      .from(BUCKET)
-      .list('', {
-        limit: 100,
-        offset: 0,
-        sortBy: { column: 'name', order: 'asc' },
-      });
+    const { data, error } = await supabase
+      .from('pdfs')
+      .select('id, nome_arquivo, caminho_storage, created_at')
+      .order('created_at', { ascending: false });
 
     if (error) throw error;
 
-    const arquivos = data
-      .filter(file => file.name.endsWith('.pdf'))
-      .map(file => {
-        const { data: urlData } = supabase.storage
-          .from(BUCKET)
-          .getPublicUrl(file.name);
-
-        return {
-          id: file.id ?? file.name,
-          nome: file.name.replace('.pdf', '').replace(/-|_/g, ' '),
-          linkPreview: urlData.publicUrl,
-          linkDownload: urlData.publicUrl,
-          thumb: null,
-        };
-      });
-
-    return arquivos;
+    return data.map(row => ({
+      id: row.id,
+      nome: row.nome_arquivo.replace('.pdf', '').replace(/-|_/g, ' '),
+      linkPreview: getPublicUrl(row.caminho_storage),
+      linkDownload: getPublicUrl(row.caminho_storage),
+      created_at: row.created_at,
+    }));
   } catch (error) {
-    console.error('Erro ao buscar relatórios do Supabase:', error);
+    console.error('Erro ao buscar relatórios:', error);
+    return [];
+  }
+};
+
+// Busca todos os PDFs (para a página de relatórios)
+export const fetchTodosRelatorios = async () => {
+  try {
+    const { data, error } = await supabase
+      .from('pdfs')
+      .select('id, nome_arquivo, caminho_storage, created_at')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    return data.map(row => ({
+      id: row.id,
+      nome: row.nome_arquivo.replace('.pdf', '').replace(/-|_/g, ' '),
+      linkPreview: getPublicUrl(row.caminho_storage),
+      linkDownload: getPublicUrl(row.caminho_storage),
+      created_at: row.created_at,
+    }));
+  } catch (error) {
+    console.error('Erro ao buscar todos os relatórios:', error);
     return [];
   }
 };

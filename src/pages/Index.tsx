@@ -6,7 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Target, Eye, Heart, Lightbulb, ArrowRight } from "lucide-react";
 import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
-
+import QuemSomosSection from "@/components/QuemSomosSection.jsx";
+import QuemSomos from "./QuemSomos";
 
 const Index = () => {
   return (
@@ -14,74 +15,8 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <Hero />
-        <section className="py-20 bg-muted">
-          <div className="container">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-3xl font-['Cambria'] md:text-3xl font-bold text-foreground mb-6">
-                  Quem Somos
-                </h2>
-                <p className="text-lg font-['Cambria'] mb-1 leading-relaxed text-justify">
-                  O Observatório de Indicadores Culturais e Inovação em Dados (ObIC) é uma gerência dedicada da
-                  Secretaria de Cultura de Pernambuco (SECULT-PE) à pesquisa, monitoramento e coleta sistemática
-                  de dados da cultura do estado.
-                </p>
-                <p className="text-lg font-['Cambria'] mb-3 leading-relaxed text-justify">
-                  Com um enfoque particular no acompanhamento dos estudos relacionados às políticas culturais
-                  desenvolvidas pela SECULT-PE, o Observatório desenvolve e analisa indicadores culturais,
-                  transformando números em informações para a tomada de decisão estratégica.
-                </p>
-                <Button size="lg" asChild>
-                  <Link to="/quem-somos">
-                    Saiba Mais
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </Link>
-                </Button>
-              </div>
-              <div className="relative">
-                <div className="aspect-square rounded-2xl bg-gradient-primary opacity-20 absolute inset-0 blur-3xl"></div>
-                <div className="relative bg-card rounded-2xl p-8 shadow-large border border-border">
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <div className="h-10 w-10 rounded-lg bg-primary flex-shrink-0 flex items-center justify-center">
-                        <span className="text-primary-foreground font-bold">1</span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Coleta de Dados</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Monitoramento sistemático de dados culturais
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="h-10 w-10 rounded-lg bg-secondary flex-shrink-0 flex items-center justify-center">
-                        <span className="text-secondary-foreground font-bold">2</span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Análise</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Transformação de números em informações estratégicas
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <div className="h-10 w-10 rounded-lg bg-primary flex-shrink-0 flex items-center justify-center">
-                        <span className="text-primary-foreground font-bold">3</span>
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground mb-2">Decisão</h3>
-                        <p className="text-sm text-muted-foreground">
-                          Apoio à formulação de políticas públicas
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
+        
+<QuemSomosSection />
 
 
 

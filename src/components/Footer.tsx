@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
@@ -72,7 +72,12 @@ const Footer = () => {
                className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
                 <Linkedin className="h-5 w-5" />
               </a>
-            </div>
+               <a href="https://www.youtube.com/@ObIC-PE"
+              target="_blank"
+               className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                <Youtube className="h-5 w-5" />
+              </a>
+            </div>           
           </div>
         </div>
 

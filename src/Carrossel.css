@@ -1,9 +1,64 @@
-/* Grid de cards */
-.grid-arquivos {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-  gap: 1.5rem;
+/* Container geral */
+.container-carrossel {
   width: 100%;
+  overflow: hidden;
+}
+
+/* Wrapper com setas */
+.carrossel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Viewport — janela visível, não pode vazar */
+.carrossel-viewport {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Faixa deslizante */
+.carrossel-faixa {
+  display: flex;
+  transition: transform 0.4s ease;
+  will-change: transform;
+}
+
+/* Item individual — largura exata de 25% para mostrar 4 */
+.carrossel-item {
+  flex: 0 0 25%;
+  min-width: 0;
+  padding: 0 0.4rem;
+  box-sizing: border-box;
+}
+
+/* Setas */
+.seta {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  z-index: 1;
+}
+
+.seta:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.seta:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* Card */
@@ -15,6 +70,7 @@
   overflow: hidden;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
 }
 
 .card-relatorio:hover {
@@ -22,10 +78,10 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-/* Capa — altura fixa para uniformidade */
+/* Capa */
 .card-capa {
   width: 100%;
-  height: 170px;
+  height: 300px;
   overflow: hidden;
   background: #f0f0f0;
   display: flex;
@@ -34,7 +90,6 @@
   position: relative;
 }
 
-/* Canvas ocupa toda a largura, altura é cortada se necessário */
 .capa-canvas {
   width: 100% !important;
   height: 100% !important;
@@ -42,7 +97,6 @@
   display: block;
 }
 
-/* Placeholder enquanto carrega ou em caso de erro */
 .capa-placeholder {
   width: 100%;
   height: 100%;
@@ -65,7 +119,7 @@
   font-weight: bold;
 }
 
-/* Info abaixo da capa */
+/* Info */
 .card-info {
   padding: 1rem 1.2rem;
   display: flex;
@@ -74,7 +128,7 @@
 }
 
 .card-info h3 {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-family: 'Cambria', serif;
   font-weight: 600;
   color: #1a1a1a;
@@ -93,34 +147,38 @@
   gap: 0.5rem;
 }
 
-.acoes a {
+.btn-visualizar,
+.btn-baixar {
   flex: 1;
-  text-align: center;
-  padding: 0.45rem 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   font-family: 'Cambria', serif;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
-  transition: background 0.2s ease;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
-.acoes a:first-child {
-  background: #1a1a2e;
+.btn-visualizar:hover,
+.btn-baixar:hover {
+  opacity: 0.85;
+}
+
+.btn-visualizar {
+  background: #6d28d9;
   color: #fff;
 }
 
-.acoes a:first-child:hover {
-  background: #16213e;
-}
-
-.acoes a:last-child {
-  background: #f0f0f0;
-  color: #333;
-}
-
-.acoes a:last-child:hover {
-  background: #e0e0e0;
+.btn-baixar {
+  background: #16a34a;
+  color: #fff;
 }
 
 /* Loader */
@@ -135,29 +193,4 @@
 
 .loader.erro {
   color: #c0392b;
-}
-
-/* Container geral */
-.container-carrossel {
-  width: 100%;
-}
-
-/* Botão Baixar */
-.btn-baixar {
-  flex: 1;
-  text-align: center;
-  padding: 0.45rem 0.75rem;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  font-family: 'Cambria', serif;
-  font-weight: 500;
-  background: #f0f0f0;
-  color: #333;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn-baixar:hover {
-  background: #e0e0e0;
 }
