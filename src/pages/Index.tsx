@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
-import QuemSomosSection from "@/components/QuemSomosSection";
+import QuemSomosSection from "@/components/QuemSomosSection.tsx";
 
 import pnab from "@/assets/pnab.png";
 import lpg from "@/assets/lpg.jpeg";
