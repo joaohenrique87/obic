@@ -15,8 +15,8 @@ const Index = () => {
       <Header />
       <main className="flex-1">
         <Hero />
-        
-<QuemSomosSection />
+
+        <QuemSomosSection />
 
 
 
@@ -35,22 +35,17 @@ const Index = () => {
               <a href="/relatorios?tab=PNAB"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
                 target="">
-                <img src="src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                <img src="/src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
               <a href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
                 target="">
-                <img src="src/assets/lpg.jpeg" alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                <img src="/src/assets/lpg.jpeg" alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
               <a href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
                 target="">
-                <img src="src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
-              <a href="htpps://www.globo.com"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="">
-                <img src="src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+                <img src="/src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
             </div>
           </div>
@@ -62,9 +57,9 @@ const Index = () => {
               Explore Nossos Relatórios
             </h2>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              
+
               <CarrosselRelatorio />
-              
+
             </div>
           </div>
         </section>

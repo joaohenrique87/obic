@@ -79,12 +79,11 @@ interface PDFListProps {
 const PDFList = ({ category, title }: PDFListProps) => {
   const [hoveredId, setHoveredId] = useState<number | null>(null);
 
-  // Filtra PDFs pela categoria
+  
   const filteredPDFs = pdfData.filter(pdf => pdf.category === category);
 
   /**
-   * Função para visualizar PDF em nova aba
-   * O arquivo deve estar em public/pdfs/
+   * Função para visualizar PDF em nova aba  
    */
   const handleView = (fileName: string) => {
     window.open(`/pdfs/${fileName}`, '_blank');
@@ -92,7 +91,6 @@ const PDFList = ({ category, title }: PDFListProps) => {
 
   /**
    * Função para fazer download do PDF
-   * Cria um link temporário e simula o click
    */
   const handleDownload = (fileName: string, title: string) => {
     const link = document.createElement('a');

@@ -11,15 +11,6 @@ import {
 } from "@/components/ui/navigation-menu";
 import logo from "@/assets/secultobic.png";
 
-/**
- * COMPONENTE HEADER/NAVEGAÇÃO
- * 
- * Como personalizar:
- * 1. LOGO: A logo é importada de src/assets/logo.png
- * 2. MENU: Adicione ou remova itens nos arrays de navegação
- * 3. LINKS: Atualize as rotas conforme suas páginas
- * 4. CORES: Use as variáveis do design system (primary, accent, etc.)
- */
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
