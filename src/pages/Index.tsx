@@ -1,13 +1,15 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { Target, Eye, Heart, Lightbulb, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
-import QuemSomosSection from "@/components/QuemSomosSection.jsx";
-import QuemSomos from "./QuemSomos";
+import QuemSomosSection from "@/components/QuemSomosSection";
+
+import pnab from "@/assets/pnab.png";
+import lpg from "@/assets/lpg.jpeg";
+import rouanet from "@/assets/rouanet.png";
 
 const Index = () => {
   return (
@@ -17,8 +19,6 @@ const Index = () => {
         <Hero />
 
         <QuemSomosSection />
-
-
 
         <section className="py-20 bg-background">
           <div className="max-w-[1600px] mx-auto px-4">
@@ -32,20 +32,23 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-5">
-              <a href="/relatorios?tab=PNAB"
+              <a
+                href="/relatorios?tab=PNAB"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="">
-                <img src="/src/assets/pnab.png" alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              >
+                <img src={pnab} alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
-              <a href="/relatorios"
+              <a
+                href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="">
-                <img src="/src/assets/lpg.jpeg" alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              >
+                <img src={lpg} alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
-              <a href="/relatorios"
+              <a
+                href="/relatorios"
                 className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-                target="">
-                <img src="/src/assets/rouanet.png" alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
+              >
+                <img src={rouanet} alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
               </a>
             </div>
           </div>
@@ -56,11 +59,7 @@ const Index = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
               Explore Nossos Relatórios
             </h2>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-              <CarrosselRelatorio />
-
-            </div>
+            <CarrosselRelatorio />
           </div>
         </section>
       </main>
