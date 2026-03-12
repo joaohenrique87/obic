@@ -9,7 +9,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/secultobic.png";
 
 /**
  * COMPONENTE HEADER/NAVEGAÇÃO

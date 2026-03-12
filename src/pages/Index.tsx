@@ -21,12 +21,12 @@ const Index = () => {
                 <h2 className="text-3xl font-['Cambria'] md:text-3xl font-bold text-foreground mb-6">
                   Quem Somos
                 </h2>
-                <p className="text-lg font-['Cambria'] mb-1 leading-relaxed">
+                <p className="text-lg font-['Cambria'] mb-1 leading-relaxed text-justify">
                   O Observatório de Indicadores Culturais e Inovação em Dados (ObIC) é uma gerência dedicada da
                   Secretaria de Cultura de Pernambuco (SECULT-PE) à pesquisa, monitoramento e coleta sistemática
                   de dados da cultura do estado.
                 </p>
-                <p className="text-lg font-['Cambria'] mb-3 leading-relaxed">
+                <p className="text-lg font-['Cambria'] mb-3 leading-relaxed text-justify">
                   Com um enfoque particular no acompanhamento dos estudos relacionados às políticas culturais
                   desenvolvidas pela SECULT-PE, o Observatório desenvolve e analisa indicadores culturais,
                   transformando números em informações para a tomada de decisão estratégica.
