@@ -1,27 +1,163 @@
-
-.container-carrossel {
-  padding: 20px;
-  background-color: #f0f4f8; /* Um tom azulado bem leve */
-}
-
+/* Grid de cards */
 .grid-arquivos {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding: 10px;
-}
-
-.card-relatorio {
-  min-width: 200px;
-  border: 1px solid #0056b3; /* Azul padrão */
-  border-radius: 8px;
-  padding: 10px;
-  background: white;
-  text-align: center;
-}
-
-.card-relatorio img {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 1.5rem;
   width: 100%;
-  height: auto;
-  border-radius: 4px;
+}
+
+/* Card */
+.card-relatorio {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-relatorio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* Capa — altura fixa para uniformidade */
+.card-capa {
+  width: 100%;
+  height: 170px;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Canvas ocupa toda a largura, altura é cortada se necessário */
+.capa-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder enquanto carrega ou em caso de erro */
+.capa-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e8e8e8;
+  color: #999;
+  font-size: 0.9rem;
+  font-family: 'Cambria', serif;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.capa-erro {
+  background: #fdecea;
+  color: #c0392b;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+/* Info abaixo da capa */
+.card-info {
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.card-info h3 {
+  font-size: 0.95rem;
+  font-family: 'Cambria', serif;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0;
+  line-height: 1.4;
+  text-transform: capitalize;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Botões */
+.acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.acoes a {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Cambria', serif;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.acoes a:first-child {
+  background: #1a1a2e;
+  color: #fff;
+}
+
+.acoes a:first-child:hover {
+  background: #16213e;
+}
+
+.acoes a:last-child {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.acoes a:last-child:hover {
+  background: #e0e0e0;
+}
+
+/* Loader */
+.loader {
+  text-align: center;
+  padding: 2rem;
+  font-family: 'Cambria', serif;
+  color: #666;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.loader.erro {
+  color: #c0392b;
+}
+
+/* Container geral */
+.container-carrossel {
+  width: 100%;
+}
+
+/* Botão Baixar */
+.btn-baixar {
+  flex: 1;
+  text-align: center;
+  padding: 0.45rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-family: 'Cambria', serif;
+  font-weight: 500;
+  background: #f0f0f0;
+  color: #333;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-baixar:hover {
+  background: #e0e0e0;
 }
