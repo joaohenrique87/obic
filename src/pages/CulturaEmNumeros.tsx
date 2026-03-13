@@ -1,97 +1,140 @@
+import { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import PDFList from "@/components/PDFList";
 
-/**
- * PÁGINA CULTURA EM NÚMEROS
- * 
- * Como melhorar:
- * 1. Adicione dashboards de estatísticas culturais
- * 2. Integre com APIs de dados culturais (IBGE, MinC, etc.)
- * 3. Crie visualizações interativas com bibliotecas como Recharts
- * 4. Adicione filtros por região, período, segmento cultural
- */
-const CulturaEmNumeros = () => {
+// Spinner de loading para os dashboards
+const DashboardFrame = ({ src, title }: { src: string; title: string }) => {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <div className="relative w-full rounded-lg overflow-hidden" style={{ minHeight: '600px' }}>
+      {/* Spinner */}
+      {loading && (
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          background: 'hsl(var(--muted))',
+          zIndex: 10,
+          gap: '1rem',
+        }}>
+          <div style={{
+            width: '48px',
+            height: '48px',
+            border: '4px solid hsl(var(--border))',
+            borderTop: '4px solid hsl(var(--primary))',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite',
+          }} />
+          <p style={{ color: 'hsl(var(--muted-foreground))', fontSize: '0.9rem', fontFamily: 'Cambria, serif' }}>
+            Carregando dashboard...
+          </p>
+          <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+        </div>
+      )}
+      <iframe
+        src={src}
+        title={title}
+        className="w-full"
+        style={{ minHeight: '600px', border: 'none', display: 'block' }}
+        allowFullScreen
+        onLoad={() => setLoading(false)}
+      />
+    </div>
+  );
+};
+
+const VALID_TABS = ["lpg", "PNAB", "rouanet"];
+
+const Relatorios = () => {
+  const [searchParams] = useSearchParams();
+  const tabParam = searchParams.get("tab");
+  const defaultTab = VALID_TABS.includes(tabParam ?? "") ? tabParam! : "lpg";
+
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <Header />
-      
+
       <main className="flex-1 container py-12">
         <div className="text-center mb-12">
-          <h1 className="text-4xl font-bold text-foreground mb-4">Cultura em Números</h1>
+          <h1 className="text-4xl font-bold text-foreground mb-4">Dados</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Indicadores e estatísticas sobre o setor cultural brasileiro
+            Acesse dados e análises sobre políticas culturais através de nossos dashboards interativos e relatórios em PDF
           </p>
         </div>
 
-        {/* 
-          CARDS DE ESTATÍSTICAS
-          Como personalizar:
-          1. Substitua os valores pelos indicadores reais
-          2. Adicione mais cards conforme necessário
-          3. Considere usar ícones do lucide-react para cada indicador
-        */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl font-bold text-primary">X.XXX</CardTitle>
-              <CardDescription>Equipamentos Culturais</CardDescription>
-            </CardHeader>
-          </Card>
+        <Tabs defaultValue={defaultTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-3 mb-8">
+            <TabsTrigger value="lpg">Lei Paulo Gustavo</TabsTrigger>
+            <TabsTrigger value="PNAB">PNAB</TabsTrigger>
+            <TabsTrigger value="rouanet">Rouanet em Pernambuco</TabsTrigger>
+          </TabsList>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl font-bold text-primary">R$ X,X bi</CardTitle>
-              <CardDescription>Investimento em Cultura</CardDescription>
-            </CardHeader>
-          </Card>
+          {/* LEI PAULO GUSTAVO */}
+          <TabsContent value="lpg" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - Lei Paulo Gustavo</CardTitle>
+                <CardDescription>
+                  Visualização interativa dos dados da execução da Lei Paulo Gustavo
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DashboardFrame
+                  src="https://secultpe-obic.shinyapps.io/leipaulogustavo/"
+                  title="Dashboard Lei Paulo Gustavo"
+                />
+              </CardContent>
+            </Card>
+            <PDFList title="Relatórios em PDF - Lei Paulo Gustavo" category={""} />
+          </TabsContent>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl font-bold text-primary">XXX mil</CardTitle>
-              <CardDescription>Profissionais do Setor</CardDescription>
-            </CardHeader>
-          </Card>
+          {/* PNAB */}
+          <TabsContent value="PNAB" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - PNAB Ciclo 1</CardTitle>
+                <CardDescription>
+                  Acompanhe a implementação e resultados da PNAB Ciclo 1
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DashboardFrame
+                  src="https://secultpe-obic.shinyapps.io/pnab/"
+                  title="Dashboard PNAB Ciclo 1"
+                />
+              </CardContent>
+            </Card>
+            <PDFList title="Relatórios em PDF - PNAB" category={""} />
+          </TabsContent>
 
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-3xl font-bold text-primary">X.XXX</CardTitle>
-              <CardDescription>Municípios Atendidos</CardDescription>
-            </CardHeader>
-          </Card>
-        </div>
+          {/* ROUANET */}
+          <TabsContent value="rouanet" className="space-y-8">
+            <Card>
+              <CardHeader>
+                <CardTitle>Dashboard - Lei Rouanet em Pernambuco</CardTitle>
+                <CardDescription>
+                  Dados e indicadores da Lei Rouanet no Estado de Pernambuco
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <DashboardFrame
+                  src="https://secultpe-obic.shinyapps.io/rouanet-pe/"
+                  title="Dashboard Lei Rouanet PE"
+                />
+              </CardContent>
+            </Card>
+            <PDFList title="Relatórios em PDF - Rouanet" category={""} />
+          </TabsContent>
 
-        {/* 
-          DASHBOARD PRINCIPAL
-          Como configurar:
-          1. Substitua a URL pelo seu dashboard de dados culturais
-          2. Pode ser Power BI, Looker Studio, Tableau, etc.
-          3. Ajuste o height conforme necessário
-        */}
-        <Card>
-          <CardHeader>
-            <CardTitle>Painel de Indicadores Culturais</CardTitle>
-            <CardDescription>
-              Visualização interativa de dados sobre cultura no Brasil
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="w-full bg-muted rounded-lg flex items-center justify-center" style={{ minHeight: '700px' }}>
-              <iframe
-                src="https://exemplo-dashboard-cultura.com/embed"
-                className="w-full h-full rounded-lg"
-                style={{ minHeight: '700px' }}
-                frameBorder="0"
-                allowFullScreen
-                title="Dashboard Cultura em Números"
-              />
-              {/* Placeholder - remova este texto quando adicionar o dashboard real */}
-              <p className="text-muted-foreground absolute">
-                Dashboard de indicadores culturais será exibido aqui - configure a URL no código
-              </p>
-            </div>
-          </CardContent>
-        </Card>
+        </Tabs>
       </main>
 
       <Footer />
@@ -99,4 +142,4 @@ const CulturaEmNumeros = () => {
   );
 };
 
-export default CulturaEmNumeros;
+export default Relatorios;

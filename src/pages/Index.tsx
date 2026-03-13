@@ -5,11 +5,17 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import CarrosselRelatorio from '@/CarrosselRelatorio.jsx';
-import QuemSomosSection from "@/components/QuemSomosSection.tsx";
+import QuemSomosSection from "@/components/QuemSomosSection.jsx";
 
 import pnab from "@/assets/pnab.png";
 import lpg from "@/assets/lpg.jpeg";
 import rouanet from "@/assets/rouanet.png";
+
+const dashboards = [
+  { href: "/cultura-em-numeros?tab=PNAB",    img: pnab,    alt: "Dashboard PNAB" },
+  { href: "/cultura-em-numeros?tab=lpg",     img: lpg,     alt: "Dashboard Lei Paulo Gustavo" },
+  { href: "/cultura-em-numeros?tab=rouanet", img: rouanet, alt: "Dashboard Lei Rouanet em Pernambuco" },
+];
 
 const Index = () => {
   return (
@@ -32,24 +38,19 @@ const Index = () => {
             </div>
 
             <div className="flex flex-wrap justify-center gap-5">
-              <a
-                href="/relatorios?tab=PNAB"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-              >
-                <img src={pnab} alt="Dashboard PNAB" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
-              <a
-                href="/relatorios"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-              >
-                <img src={lpg} alt="Dashboard LPG" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
-              <a
-                href="/relatorios"
-                className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
-              >
-                <img src={rouanet} alt="Dashboard Lei Rouanet em Pernambuco" className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500" />
-              </a>
+              {dashboards.map((d) => (
+                <Link
+                  key={d.href}
+                  to={d.href}
+                  className="group relative block overflow-hidden rounded-2xl border-2 border-transparent hover:border-primary transition-all duration-500 shadow-lg w-full md:w-[calc(33.333%-1rem)]"
+                >
+                  <img
+                    src={d.img}
+                    alt={d.alt}
+                    className="w-full h-auto object-cover group-hover:scale-[1.05] transition-transform duration-500"
+                  />
+                </Link>
+              ))}
             </div>
           </div>
         </section>

@@ -6,15 +6,8 @@ import { ArrowRight } from "lucide-react";
 const VIDEO_ID = "80EcQHpFv6Y";
 const PLAYLIST_ID = "PLJDWpFL5ny_ooRDdzxZp13tFuJPb35Ih7";
 
-interface VideoItem {
-  id: string;
-  title: string;
-  thumb: string;
-  url: string;
-}
-
 const PlaylistSidebar = () => {
-  const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [videos, setVideos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,7 +17,7 @@ const PlaylistSidebar = () => {
           `https://api.rss2json.com/v1/api.json?rss_url=https://www.youtube.com/feeds/videos.xml?playlist_id=${PLAYLIST_ID}`
         );
         const data = await res.json();
-        const items: VideoItem[] = (data.items || []).map((item: any) => {
+        const items = (data.items || []).map((item) => {
           const videoId = item.link.split('v=')[1]?.split('&')[0];
           return {
             id: videoId,
@@ -112,8 +105,8 @@ const QuemSomosSection = () => {
       <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{
           display: 'grid',
-          gridTemplateColumns: '1fr 1fr',
-          gap: '3rem',
+          gridTemplateColumns: '1fr 2px 1fr',
+          gap: '2rem',
           alignItems: 'start',
         }}>
 
@@ -140,33 +133,42 @@ const QuemSomosSection = () => {
             </Button>
           </div>
 
-          {/* Coluna direita — vídeo principal + playlist com scroll */}
-          <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: '0.75rem', alignItems: 'start' }}>
+          {/* Linha divisória vertical */}
+          <div style={{ background: 'rgba(0,0,0,0.15)', borderRadius: '2px', alignSelf: 'stretch' }} />
 
-            {/* Vídeo principal */}
-            <div style={{
-              position: 'relative',
-              paddingBottom: '56.25%',
-              height: 0,
-              borderRadius: '12px',
-              overflow: 'hidden',
-              boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
-            }}>
-              <iframe
-                src={`https://www.youtube.com/embed/${VIDEO_ID}`}
-                title="Vídeo ObIC"
-                style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              />
+          {/* Coluna direita — título + vídeo + playlist */}
+          <div>
+            <h2 style={{ fontFamily: 'Cambria, serif', fontSize: '1.875rem', fontWeight: 700, marginBottom: '1.5rem' }}>
+              Vídeos
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: '3fr 2fr', gap: '0.75rem', alignItems: 'start' }}>
+
+              {/* Vídeo principal */}
+              <div style={{
+                position: 'relative',
+                paddingBottom: '56.25%',
+                height: 0,
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
+              }}>
+                <iframe
+                  src={`https://www.youtube.com/embed/${VIDEO_ID}`}
+                  title="Vídeo ObIC"
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none' }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+
+              {/* Playlist com scroll */}
+              <div style={{ height: '300px', overflow: 'hidden' }}>
+                <PlaylistSidebar />
+              </div>
+
             </div>
-
-            {/* Playlist com scroll */}
-            <div style={{ height: '300px', overflow: 'hidden' }}>
-              <PlaylistSidebar />
-            </div>
-
           </div>
+
         </div>
       </div>
     </section>

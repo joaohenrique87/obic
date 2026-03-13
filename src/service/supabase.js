@@ -12,12 +12,13 @@ export const fetchRelatoriosRecentes = async () => {
   try {
     const { data, error } = await supabase
       .from('pdfs')
-      .select('id, nome_arquivo, caminho_storage, created_at')
+      .select('id, nome_arquivo, caminho_storage, created_at, categoria')
       .order('created_at', { ascending: false });
 
     if (error) throw error;
 
     return data.map(row => ({
+          categoria: row.categoria ?? null,
       id: row.id,
       nome: row.nome_arquivo.replace('.pdf', '').replace(/-|_/g, ' '),
       linkPreview: getPublicUrl(row.caminho_storage),
@@ -35,12 +36,13 @@ export const fetchTodosRelatorios = async () => {
   try {
     const { data, error } = await supabase
       .from('pdfs')
-      .select('id, nome_arquivo, caminho_storage, created_at')
+      .select('id, nome_arquivo, caminho_storage, created_at, categoria')
       .order('created_at', { ascending: false });
 
     if (error) throw error;
 
     return data.map(row => ({
+          categoria: row.categoria ?? null,
       id: row.id,
       nome: row.nome_arquivo.replace('.pdf', '').replace(/-|_/g, ' '),
       linkPreview: getPublicUrl(row.caminho_storage),

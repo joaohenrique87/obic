@@ -11,6 +11,7 @@ import Pesquisas from "./pages/Pesquisas";
 import CulturaEmNumeros from "./pages/CulturaEmNumeros";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
+import RelatoriosPDF from "@/pages/Relatorios";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -23,11 +24,10 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/quem-somos" element={<QuemSomos />} />
-          <Route path="/equipe" element={<Equipe />} />
-          <Route path="/relatorios" element={<Relatorios />} />
+          <Route path="/equipe" element={<Equipe />} />          
           <Route path="/pesquisas" element={<Pesquisas />} />
           <Route path="/cultura-em-numeros" element={<CulturaEmNumeros />} />
-          {/* ADICIONE NOVAS ROTAS AQUI, SEMPRE ACIMA DA ROTA "*" */}
+          <Route path="/relatorios" element={<Relatorios    />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
