@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
-import { Facebook, Instagram, Twitter, Mail, MapPin, Phone, Linkedin, Youtube } from "lucide-react";
+import { Mail, MapPin, Linkedin, Youtube } from "lucide-react";
 
 const Footer = () => {
   return (
     <footer className="bg-muted border-t border-border mt-20">
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+
           {/* About */}
           <div className="space-y-4">
             <div className="flex items-center space-x-3">
@@ -34,6 +35,11 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/cultura-em-numeros" className="text-muted-foreground hover:text-primary transition-colors">
+                  Cultura em Números
+                </Link>
+              </li>
+              <li>
                 <Link to="/relatorios" className="text-muted-foreground hover:text-primary transition-colors">
                   Relatórios
                 </Link>
@@ -52,7 +58,14 @@ const Footer = () => {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 flex-shrink-0" />
-                <span>Secretaria de Cultura de Pernambuco</span>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=R.+José+de+Alencar,+388+Boa+Vista+Recife+PE"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  Secretaria de Cultura de Pernambuco
+                </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 flex-shrink-0" />
@@ -67,27 +80,31 @@ const Footer = () => {
           <div>
             <h3 className="font-semibold text-foreground mb-4">Redes Sociais</h3>
             <div className="flex gap-3">
-              <a href="https://www.linkedin.com/in/obic/"
-              target="_blank"
-               className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a
+                href="https://www.linkedin.com/in/obic/"
+                target="_blank"
+                rel="noreferrer"
+                className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+              >
                 <Linkedin className="h-5 w-5" />
               </a>
-               <a href="https://www.youtube.com/@ObIC-PE"
-              target="_blank"
-               className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+              <a
+                href="https://www.youtube.com/@ObIC-PE"
+                target="_blank"
+                rel="noreferrer"
+                className="h-10 w-10 rounded-full bg-background border border-border flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all"
+              >
                 <Youtube className="h-5 w-5" />
               </a>
-            </div>           
+            </div>
           </div>
+
         </div>
 
         <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground text-center md:text-left">
-              © {new Date().getFullYear()} ObIC - Observatório de Indicadores Culturais. Todos os direitos reservados.
-            </p>
-            
-          </div>
+          <p className="text-sm text-muted-foreground text-center md:text-left">
+            © {new Date().getFullYear()} ObIC - Observatório de Indicadores Culturais. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>

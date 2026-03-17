@@ -12,6 +12,7 @@ import CulturaEmNumeros from "./pages/CulturaEmNumeros";
 import NotFound from "./pages/NotFound";
 import ScrollToTop from "./components/ScrollToTop";
 import RelatoriosPDF from "@/pages/Relatorios";
+import Contato from "@/pages/Contato";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,6 +29,7 @@ const App = () => (
           <Route path="/pesquisas" element={<Pesquisas />} />
           <Route path="/cultura-em-numeros" element={<CulturaEmNumeros />} />
           <Route path="/relatorios" element={<Relatorios    />} />
+          <Route path="/contato" element={<Contato />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
