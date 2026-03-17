@@ -1,67 +1,122 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Link } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import logo from "@/assets/secultobic.png";
 
-import img1 from '../assets/Fotos/cultura1.jpg';
-import img2 from '../assets/Fotos/cultura2.jpg';
-import img3 from '../assets/Fotos/cultura3.jpg';
-import img4 from '../assets/Fotos/cultura4.jpg';
-import img5 from '../assets/Fotos/cultura5.jpg';
-import img6 from '../assets/Fotos/cultura6.jpg';
-import img7 from '../assets/Fotos/cultura7.jpg';
-import img8 from '../assets/Fotos/cultura8.jpg';
-import img9 from '../assets/Fotos/cultura9.jpg';
-import img10 from '../assets/Fotos/cultura10.jpg';
-import img11 from '../assets/Fotos/cultura11.jpg';
-import img12 from '../assets/Fotos/cultura12.jpg';
-import img13 from '../assets/Fotos/cultura13.jpg';
-
-const Hero = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-  const images = [img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13];
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % images.length);
-    }, 6000);
-    return () => clearInterval(timer);
-  }, [images.length]);
+const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <section className="relative overflow-hidden bg-slate-900 py-16 md:py-32 min-h-[400px] md:min-h-[850px] flex items-center">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 md:h-20 items-center justify-between px-4">
 
-      {/* Imagens de fundo */}
-      {images.map((img, index) => (
-        <div
-          key={index}
-          className={`absolute inset-0 z-0 transition-opacity duration-1000 ease-in-out ${index === currentImage ? 'opacity-20' : 'opacity-0'}`}
-          style={{
-            backgroundImage: `url('${img}')`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'grayscale(20%)',
-          }}
-        />
-      ))}
+        {/* Logo */}
+        <Link to="/" className="flex items-center">
+          <img
+            src={logo}
+            alt="ObIC - Observatório de Indicadores Culturais"
+            className="h-10 md:h-16 w-auto bg-transparent transition-transform hover:scale-105"
+          />
+        </Link>
 
-      {/* Gradiente */}
-      <div className="absolute inset-0 bg-gradient-hero opacity-20 z-10" />
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center space-x-1">
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger>Sobre</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[400px] gap-3 p-4">
+                    <li>
+                      <Link to="/quem-somos" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Quem Somos</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Conheça nossa história e missão</p>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/equipe" className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground">
+                        <div className="text-sm font-medium leading-none">Equipe</div>
+                        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">Conheça nossos profissionais</p>
+                      </Link>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-      {/* Grid pattern */}
-      <div className="absolute inset-0 z-20 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAxMCAwIEwgMCAwIDAgMTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmlkKSIvPjwvc3ZnPg==')] opacity-10" />
+              <NavigationMenuItem>
+                <Link to="/cultura-em-numeros" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground">
+                  Cultura em Números
+                </Link>
+              </NavigationMenuItem>
 
-      <div className="container relative z-30 px-6">
-        <div className="mx-auto max-w-4xl text-center">
-          <h1 className="mb-4 text-xl font-bold tracking-tight text-white sm:text-2xl md:text-4xl max-w-2xl mx-auto opacity-50">
-            Observatório de Indicadores Culturais e Inovação em Dados
-          </h1>
-          <p className="mb-8 text-xs text-white/90 sm:text-sm md:text-base max-w-xl mx-auto opacity-50">
-            Transformando dados em informações para o desenvolvimento cultural de Pernambuco
-          </p>
-        </div>
+              <NavigationMenuItem>
+                <Link to="/Relatorios" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground">
+                  Relatórios
+                </Link>
+              </NavigationMenuItem>
+
+              <NavigationMenuItem>
+                <Link to="/pesquisas" className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground">
+                  Informes Técnicos
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+
+          <Button variant="default" className="ml-4" asChild>
+            <Link to="/contato">Contato</Link>
+          </Button>
+        </nav>
+
+        {/* Botão hambúrguer */}
+        <Button
+          variant="ghost"
+          size="icon"
+          className="lg:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+        </Button>
       </div>
-    </section>
+
+      {/* Mobile Navigation */}
+      {isOpen && (
+        <div className="lg:hidden border-t border-border bg-background px-4 py-4">
+          <nav className="flex flex-col space-y-1">
+            {[
+              { to: "/quem-somos", label: "Quem Somos" },
+              { to: "/equipe", label: "Equipe" },
+              { to: "/cultura-em-numeros", label: "Cultura em Números" },
+              { to: "/relatorios", label: "Relatórios" },
+              { to: "/pesquisas", label: "Informes Técnicos" },
+            ].map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setIsOpen(false)}
+                className="block rounded-md px-3 py-3 text-sm font-medium text-foreground hover:bg-accent hover:text-accent-foreground transition-colors"
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2">
+              <Button asChild className="w-full">
+                <Link to="/contato" onClick={() => setIsOpen(false)}>Contato</Link>
+              </Button>
+            </div>
+          </nav>
+        </div>
+      )}
+    </header>
   );
 };
 
-export default Hero;
+export default Header;

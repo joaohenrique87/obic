@@ -71,10 +71,10 @@ const Relatorios = () => {
         </div>
 
         <Tabs defaultValue={defaultTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="lpg">Lei Paulo Gustavo</TabsTrigger>
-            <TabsTrigger value="PNAB">PNAB</TabsTrigger>
-            <TabsTrigger value="rouanet">Rouanet em Pernambuco</TabsTrigger>
+          <TabsList className="flex flex-wrap w-full mb-8 h-auto gap-1">
+            <TabsTrigger value="lpg" className="flex-1 min-w-[120px]">Lei Paulo Gustavo</TabsTrigger>
+            <TabsTrigger value="PNAB" className="flex-1 min-w-[120px]">PNAB</TabsTrigger>
+            <TabsTrigger value="rouanet" className="flex-1 min-w-[120px]">Rouanet em Pernambuco</TabsTrigger>
           </TabsList>
 
           {/* LEI PAULO GUSTAVO */}
